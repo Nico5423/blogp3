@@ -15,7 +15,7 @@ if (isset($_GET['action']))
     
     elseif ($_GET['action'] == 'detailPost')// Détail d'un post 
 		{      
-        if (!empty($_GET['id'])) // Si id du post n'est PAS précisé alors
+        if (!empty($_GET['id'])) // Si id du post n'est PAS vide
 	        {
 	        getPost();
 	        }
@@ -30,4 +30,3 @@ if (isset($_GET['action']))
 else {
     listPosts();
    	}
-    // bonjour
