@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
-<p>Derniers posts du blog :</p>
+<p>Derniers billets du blog :</p>
 <?php
 while ($data = $posts->fetch())
 {
@@ -15,8 +15,6 @@ while ($data = $posts->fetch())
         
         <p>
             <?= nl2br(htmlspecialchars($data['post_content'])) ?>
-            <br />
-            <?= nl2br(htmlspecialchars($data['post_id'])) ?>
             <br />
             <em><a href="index.php?action=listPosts&id=<?= $data['post_id'] ?>">Detail du post</a></em>
         </p>

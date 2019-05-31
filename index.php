@@ -11,13 +11,16 @@ if (isset($_GET['action']))
     if ($_GET['action'] == 'listPosts') 
     	{        
         	//listPosts();
+        	echo 'LISTING DES POSTS';
+
     	}
     
     elseif ($_GET['action'] == 'detailPost')// Détail d'un post 
 		{      
-        if (!empty($_GET['id'])) // Si id du post n'est PAS vide
+        if (!empty($_GET['id'])) // Si id du post n'est PAS vide ou qu'il n'existe pas
 	        {
 	        getPost();
+	        	//echo $_GET['id'];
 	        }
         else 
         	{

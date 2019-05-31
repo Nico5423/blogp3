@@ -9,17 +9,26 @@ function listPosts()
     require('view/frontend/listPostsView.php');
 }
 
-// On récupère les infos du post grâce à l'id passé dans l'URL
 
+/*function listComments()
+{
+    $posts = getListComments(); // On récupère la liste des comments en BDD
+    require('view/frontend/listCommentsView.php');
+}
+
+*/
+
+// On récupère les infos du post grâce à l'id passé dans l'URL
 
 function getPost()
 {
-    $post = getPostById($_GET['id']); // 
+	$post = getPostById($_GET['id']); // 
     $comments = getComments($_GET['id']);
-    require('view/frontend/postView.php');
+    require('view/frontend/listPostsView.php');
 }
 
 
 function listUsers() {
 
 }
+
