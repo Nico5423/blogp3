@@ -1,29 +1,30 @@
-<?php $title = 'Accueil'; ?>
+<?php $title = 'Details'; ?>
 
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
-<p>Derniers billets du blog :</p>
+<p>COMMMENTAIRES DU POST NUMERO <?php echo $_GET['id']?></p>
 <?php
-while ($data = $posts->fetch())
+while ($data = $comments->fetch())
 {
     ?>
     <div class="news">
         <h3>
-            <?= htmlspecialchars($data['post_title']) ?>
+            <?= htmlspecialchars($data['comment_id']) ?>
             <em>le <?= $data['creation_date_fr'] ?></em>
         </h3>
         
         <p>
-            <?= nl2br(htmlspecialchars($data['post_content'])) ?>
+            <?= nl2br(htmlspecialchars($data['comment_content'])) ?>
             <br />
-            <em><a href="index.php?action=listPosts&id=<?= $data['post_id'] ?>">Detail du post</a></em>
+            <em><a href="index.php?">retour à la liste</a></em>
         </p>
     </div>
+
 	<?php
 }
-$posts->closeCursor();
+$comments->closeCursor();
 ?>
 
 <?php $content = ob_get_clean(); ?>
-
+<em><a href="index.php?">retour à la liste</a></em>
 <?php require('template.php'); ?>

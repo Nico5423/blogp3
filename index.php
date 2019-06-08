@@ -17,10 +17,9 @@ if (isset($_GET['action']))
     
     elseif ($_GET['action'] == 'detailPost')// Détail d'un post 
 		{      
-        if (!empty($_GET['id'])) // Si id du post n'est PAS vide ou qu'il n'existe pas
+        if (!empty($_GET['id'])) // Si id du post n'est PAS vide et qu'il n'est pas nase
 	        {
 	        getPost();
-	        	//echo $_GET['id'];
 	        }
         else 
         	{

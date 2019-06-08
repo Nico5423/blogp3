@@ -26,16 +26,7 @@ function getListPosts()
             FROM table_posts ORDER BY post_creation DESC LIMIT 0, 5');
     return $req;
 }
-/*
 
-function getListComments()
-{
-    $db = dbConnect();
-  $req = $db->query('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr 
-            FROM table_comments ORDER BY comment_creation DESC LIMIT 0, 5');
-    return $req;
-}
-*/
 
 /**
  * Récupère les infos d'un post
@@ -50,25 +41,30 @@ function getPostById($postId)
     $req->execute(array(
         $postId
     ));
-    $post = $req->fetch();
+    $post = $req->fetch(PDO::FETCH_ASSOC);
     return $post;
 }
 
+// NE PAS UTILISER $req->closeCursor();
 
-/**
- * Récupère les infos d'un post
- *
- * @param integer $postId
- * @return mixed
- */
 
-function getComments()
+// récupère la liste des comments   
+
+/*function getListComments()
 {
     $db = dbConnect();
-    $req = $db->query('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM table_comments WHERE post_id = ?');
-    //return $req;
-    $req->execute(array( 
+    $req2 = $db->query('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_comment FROM table_comments ORDER BY comment_creation DESC');
+    return $req2;
+}
+*/
+
+
+
+function getCommentsById($postId)
+{
+    $db = dbConnect();
+    $req2 = $db->prepare('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM table_comments WHERE post_id = ?');
+    $req2->execute(array( $postId
     ));
-    $comments = $req->fetch();
-    return $comments;
+    return $req2;
 } 
