@@ -10,6 +10,14 @@ function listPosts()
 }
 
 
+function listPosts2()
+{
+    $posts = getListPosts(); // On récupère la liste des posts en BDD
+    require('view/frontend/listPostsView2.php');
+}
+
+
+
 function listComments()
 {
     $comments = getListComments(); // On récupère la liste des comments en BDD

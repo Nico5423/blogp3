@@ -1,4 +1,5 @@
 <?php
+
 try
 {
 	// On se connecte à MySQL
@@ -21,6 +22,7 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 ?>
     <p>
     <strong>COMMENTAIRE</strong> : <?php echo $donnees['comment_id']; ?><br />
+    Ce commentaire se rapporte au post : <strong><?php echo $donnees['post_id']; ?></strong>, <br />
     L auteur de ce commentaire est : <strong><?php echo $donnees['comment_author']; ?></strong>, <br />
     et le texte de ce commentaire est <strong><?php echo $donnees['comment_content']; ?></strong><br />
       </p>

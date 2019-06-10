@@ -10,10 +10,8 @@ if (isset($_GET['action']))
     // Listing des posts
     if ($_GET['action'] == 'listPosts') 
     	{        
-        	//listPosts();
-        	echo 'LISTING DES POSTS';
-
-    	}
+        	listPosts();
+       	}
     
     elseif ($_GET['action'] == 'detailPost')// Détail d'un post 
 		{      

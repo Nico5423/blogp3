@@ -3,13 +3,20 @@
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p>COMMMENTAIRES DU POST NUMERO <?php echo $_GET['id']?></p>
+<p>RAPPEL DU TITRE DU POST : <?php echo $post['post_title']?> </p>
 <?php
+
+
+
 while ($data = $comments->fetch())
+
+
 {
+
     ?>
     <div class="news">
         <h3>
-            <?= htmlspecialchars($data['comment_id']) ?>
+            
             <em>le <?= $data['creation_date_fr'] ?></em>
         </h3>
         
@@ -22,6 +29,8 @@ while ($data = $comments->fetch())
 
 	<?php
 }
+
+
 $comments->closeCursor();
 ?>
 
