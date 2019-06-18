@@ -10,13 +10,6 @@ function listPosts()
 }
 
 
-function listPosts2()
-{
-    $posts = getListPosts(); // On récupère la liste des posts en BDD
-    require('view/frontend/listPostsView2.php');
-}
-
-
 
 function listComments()
 {
@@ -29,11 +22,24 @@ function listComments()
 // On récupère les infos du post grâce à l'id passé dans l'URL
 
 function getPost()
-{
-	$post = getPostById($_GET['id']); // 
-    $comments = getCommentsById($_GET['id']);
-    require('view/frontend/listCommentsView.php');
+{	
+	//test d'un nouveau commentaire
 
+	if ('pseudo'==NULL) 
+	{
+		
+
+	}
+	else
+	{
+		inscripNewComment();
+	}
+
+
+
+	$post = getPostById($_GET['id']); // On récupère les infos du post
+    $listComments = getCommentsById($_GET['id']); // ....des commentaires liés au post
+    require('view/frontend/listCommentsView.php');
 }
 
 

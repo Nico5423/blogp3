@@ -45,26 +45,20 @@ function getPostById($postId)
     return $post;
 }
 
-// NE PAS UTILISER $req->closeCursor();
-
-
-// récupère la liste des comments   
-
-/*function getListComments()
+function inscripNewComment()
 {
     $db = dbConnect();
-    $req2 = $db->query('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_comment FROM table_comments ORDER BY comment_creation DESC');
-    return $req2;
+    $db->exec('INSERT INTO table_comments(post_id, comment_author, comment_content, comment_creation) VALUES (98,pseudo,newComment,NOW())');
+
 }
-*/
 
 
 
 function getCommentsById($postId)
 {
     $db = dbConnect();
+    
     $req2 = $db->prepare('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM table_comments WHERE post_id = ?');
-    $req2->execute(array( $postId
-    ));
-    return $req2;
+    $req2->execute(array($postId));
+    return $req2->fetchAll(PDO::FETCH_ASSOC);
 } 
