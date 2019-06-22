@@ -1,6 +1,7 @@
 <?php
 // appel du front model
-require('model/frontend.php');
+
+require('model/frontend.php'); 
 
 
 function listPosts()
@@ -23,27 +24,21 @@ function listComments()
 
 function getPost()
 {	
-	//test d'un nouveau commentaire
-
-	if ('pseudo'==NULL) 
-	{
-		
-
-	}
-	else
-	{
-		inscripNewComment();
-	}
-
-
-
+	
 	$post = getPostById($_GET['id']); // On récupère les infos du post
     $listComments = getCommentsById($_GET['id']); // ....des commentaires liés au post
     require('view/frontend/listCommentsView.php');
 }
 
+// LE PROBLEME EST LA
 
-function listUsers() {
+function submitCommentForm()
+{
+	$commentAuthor=$_POST['pseudo']; //recup de la variable du formulaire 
+	$commentContent=$_POST['newComment']; //recup de la variable du formulaire
+	$idRef=$_POST['idDuPost'];//recup de la variable du formulaire
 
+	insertCommentaire($idRef,$commentAuthor,$commentContent);//passge des variables à la fonction InsertCommentaire pour traitement <=> inscription dans la base de données 
+	//header('Location: index.php?action=detailPost&id=idRef');
 }
 

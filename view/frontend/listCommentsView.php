@@ -2,9 +2,7 @@
 //NOM DE LA PAGE
 $title = 'COMMMENTAIRES'; ?>
 
-<?php 
-//ON OUVRE L'OBJET ?????
-ob_start(); ?>
+<?php ob_start(); ?>
 
 
 <!--PARTIE HTML DU DEBUT DE PAGE-->
@@ -12,9 +10,6 @@ ob_start(); ?>
 <p>COMMMENTAIRES DU POST NUMERO <?php echo $_GET['id']?></p>
 <p>RAPPEL DU TITRE DU POST : <?php echo $post['post_title']?> </p>
 <?php
-
-
-
 
 
 //si aucun commentaire, alors on n'affiche rien 
@@ -53,11 +48,12 @@ else
     	<?php
     }
 }
+//$idp=$_GET['id'];
 
-
+//echo $idp;
 ?>
 
-<form method="post" action="index.php?action=detailPost&id=<?=$_GET['id']?>">
+<form method="post" action='index.php?action=submitComment'>
     <p>
 
             <b>Pour ajouter un commentaire à ce post, merci de compléter les champs suivants :</b><br /><br />
@@ -65,6 +61,7 @@ else
             <input type="text" name="pseudo"/><br /><br />
             Votre commentaire :<br />
             <textarea name="newComment" rows="8" cols="45"></textarea><br /><br />
+            <input type="hidden" name="idDuPost" value="<?php echo $_GET['id'];?>">
             <input type="submit" value="Valider et envoyer" />
         </p>
 </form>
@@ -74,12 +71,10 @@ else
 
 
 
-
-
 <a href="index.php">retour à la liste</a>
 
-<?php $content = ob_get_clean(); ?>
 
+<?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
 
 
@@ -144,10 +139,3 @@ echo 'Commentaire ajouté !';
 // }
 
 
-
-
-
-
-
-
-//require('template.php'); 

@@ -12,6 +12,10 @@ if (isset($_GET['action']))
     	{        
         	listPosts();
        	}
+
+    elseif ($_GET['action']=='submitComment') {
+        submitCommentForm();
+    }
     
     elseif ($_GET['action'] == 'detailPost')// Détail d'un post 
 		{      

@@ -1,32 +1,22 @@
 <?php
-
-if ($_POST['pseudo']==NULL OR $_POST['newComment']==NULL)
-{
-    echo "AU MOINS UN DES DEUX POSTS MANQUE";
-
-}
-else
-{
+dbConnect
 
 
-  try
-    {
-    $bdd = new PDO('mysql:host=localhost;dbname=db_np3;charset=utf8', 'root', '');
-    } 
-    catch (Exception $e)
-    {
-    die('Erreur : ' . $e->getMessage());
-    }
   
-    $bdd->exec('INSERT INTO table_comments(post_id, comment_author, comment_content, comment_creation) VALUES (999,'$_POST['pseudo']','$_POST['newComment']',NOW())');
+    
+    $maintenant=date('Y-m-d H:i:s');
 
-    echo $_POST['pseudo'];
+    var_dump($maintenant)
+  
 
- 
+    $req = $bd->prepare('INSERT INTO table_comments(post_id, comment_author, comment_content, comment_creation) VALUES(:post_id, :comment_author, :comment_content, :comment_creation)');
 
+
+
+    $req->execute(array(
+    'post_id' => $idRef,
+    'comment_author' => $commentAuthor,
+    'comment_content' => $commentContent,
+    'comment_creation' => $maintenant,
+    ));
 }
-
-
-
-
- 
