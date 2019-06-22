@@ -34,11 +34,12 @@ function getPost()
 
 function submitCommentForm()
 {
+	$idRef=$_POST['idDuPost'];//recup de la variable du formulaire
 	$commentAuthor=$_POST['pseudo']; //recup de la variable du formulaire 
 	$commentContent=$_POST['newComment']; //recup de la variable du formulaire
-	$idRef=$_POST['idDuPost'];//recup de la variable du formulaire
-
+	
 	insertCommentaire($idRef,$commentAuthor,$commentContent);//passge des variables à la fonction InsertCommentaire pour traitement <=> inscription dans la base de données 
 	//header('Location: index.php?action=detailPost&id=idRef');
+
 }
 
