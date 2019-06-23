@@ -15,7 +15,7 @@ try //mot-clé pour tenter une connexion
     $identifiant=5;
     $auteur="moi";
     $contenu="test n°4";
-    $cid=14;
+    $cid=15;
 
 
 /*
@@ -27,40 +27,6 @@ $bdd->exec('INSERT INTO table_comments(post_id, comment_author, comment_content)
 
 
 
-$req = $bdd->prepare('INSERT INTO table_comments(comment_id, post_id, comment_author, comment_content, comment_creation) VALUES(:comment_id,:post_id, :comment_author, :comment_content, :comment_creation)');
-$req->execute(array(
-    'comment_id'=> $cid,
-    'post_id' => $identifiant,
-    'comment_author' => $auteur,
-    'comment_content' => $contenu,
-    'comment_creation' => "2019-04-19 21:00:00"
-    ));
+$req = $bdd->prepare('INSERT INTO table_comments(post_id, comment_author, comment_content) VALUES(?, ?, ?)');
+$req->execute(array($identifiant,$auteur,$contenu));
 
-
-echo $identifiant;
-echo $auteur;
-echo $contenu;
-
-
-
-
-echo 'Le jeu a bien été ajouté !';
-
-
-
-
-
-
-
-/*
-    $req = $db->prepare('INSERT INTO table_comments(post_id, comment_author, comment_content) VALUES(:post_id, :comment_author, :comment_content)');
-
-    $req->execute(array(
-    'post_id' => $identifiant,
-    'comment_author' => $auteur,
-    'comment_content' => $contenu,
-    ));
-
-*/
-
-?>

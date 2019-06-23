@@ -54,6 +54,7 @@ function getCommentsById($postId)
 function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
 {
     $db = dbConnect(); // on fait la connexion
+    
     echo $idPostParam;
     echo $auteurParam;
     echo $commentaireParam;
@@ -65,5 +66,6 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
     'comment_author' => $auteurParam,
     'comment_content' => $commentaireParam,
         ));
+  
 }
 
