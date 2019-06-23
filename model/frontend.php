@@ -40,7 +40,7 @@ function getPostById($postId) // le $postid est virtuel et ne sert qu'à montrer
     return $post;//renvoie $post à celui qui a appelé la fonction
 }
 
-// récupère les commentaire d'un post déterminé par son id placé dans l'argument de la fonction
+// récupère les commentaires d'un post déterminé par son id placé dans l'argument de la fonction
 function getCommentsById($postId)
 {
     $db = dbConnect(); //on fait la connexion
@@ -66,6 +66,6 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
     'comment_author' => $auteurParam,
     'comment_content' => $commentaireParam,
         ));
-  
+
 }
 

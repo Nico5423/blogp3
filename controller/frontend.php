@@ -30,7 +30,6 @@ function getPost()
     require('view/frontend/listCommentsView.php');
 }
 
-// LE PROBLEME EST LA
 
 function submitCommentForm()
 {
