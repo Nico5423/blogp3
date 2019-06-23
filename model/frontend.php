@@ -55,9 +55,9 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
 {
     $db = dbConnect(); // on fait la connexion
     
-    echo $idPostParam;
-    echo $auteurParam;
-    echo $commentaireParam;
+    //echo $idPostParam;
+    //echo $auteurParam;
+    //echo $commentaireParam;
     
     // REQUÊTE PREPAREE d'ECRITURE dans la base de données / table des commentaires
     $req = $db->prepare('INSERT INTO table_comments(post_id, comment_author, comment_content) VALUES(:post_id, :comment_author, :comment_content)');
@@ -66,6 +66,6 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
     'comment_author' => $auteurParam,
     'comment_content' => $commentaireParam,
         ));
-
+     //return post_id;
 }
 

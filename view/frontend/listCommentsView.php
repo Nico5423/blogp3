@@ -34,7 +34,8 @@ else
         ?>
         <div class="news">
             <h3>
-                 <em>le <?= $data['creation_date_fr'] ?></em>
+                 <em>le <?= $data['creation_date_fr'] ?></em><br/>
+                 <em><?= $data['comment_author'] ?> a écrit: </em>
             </h3>
             
             <p>
@@ -48,9 +49,7 @@ else
     	<?php
     }
 }
-//$idp=$_GET['id'];
 
-//echo $idp;
 ?>
 
 <form method="post" action='index.php?action=submitComment'>
