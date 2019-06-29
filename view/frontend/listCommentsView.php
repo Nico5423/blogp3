@@ -38,7 +38,7 @@ else
                  <em><?= $data['comment_author'] ?> a écrit: </em>
             </h3>
             
-            <p>
+            <p class="signalement"> 
               
                 <?= nl2br(htmlspecialchars($data['comment_content'])) ?>
                 <br />

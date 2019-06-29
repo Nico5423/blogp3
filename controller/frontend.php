@@ -40,7 +40,6 @@ function submitCommentForm()
 	insertCommentaire($idRef,$commentAuthor,$commentContent);//passge des variables à la fonction InsertCommentaire pour traitement <=> inscription dans la base de données 
 	
 	header('Location: index.php?action=detailPost&id='.$idRef);
-
-
+	exit(); // toujours mettre un exit après header
 }
 
