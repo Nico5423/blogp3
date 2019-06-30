@@ -27,6 +27,7 @@ function getPost()
 	
 	$post = getPostById($_GET['id']); // On récupère les infos du post
     $listComments = getCommentsById($_GET['id']); // ....des commentaires liés au post
+   
     require('view/frontend/listCommentsView.php');
 }
 
@@ -43,3 +44,10 @@ function submitCommentForm()
 	exit(); // toujours mettre un exit après header
 }
 
+function signalement($att)
+{
+
+$req=modifSignal($att);
+echo $req;
+
+}

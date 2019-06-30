@@ -45,9 +45,11 @@ function getCommentsById($postId)
 {
     $db = dbConnect(); //on fait la connexion
     
-    $req = $db->prepare('SELECT comment_id, post_id, comment_author, comment_content, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM table_comments WHERE post_id = ?');
+    $req = $db->prepare('SELECT comment_id, post_id, comment_author, comment_content,signalement, DATE_FORMAT(comment_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM table_comments WHERE post_id = ?');
     $req->execute(array($postId));
+    
     return $req->fetchAll(PDO::FETCH_ASSOC);
+
 } 
 
 
@@ -66,6 +68,25 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
     'comment_author' => $auteurParam,
     'comment_content' => $commentaireParam,
         ));
-     //return post_id;
+     
 }
 
+function modifSignal($noComment)
+{
+
+    $db = dbConnect(); // on fait la connexion
+
+    /*$resultat=$db->exec('UPDATE table_comments SET signalement = 1 WHERE comment_id=3');
+    echo $resultat . ' entrées ont été modifiées !';*/
+   
+
+    $req = $db->prepare('UPDATE table_comments SET signalement = 1 WHERE comment_id=:numeroCommentaire');
+    $req->execute(array(
+    'numeroCommentaire' => $noComment
+    ));
+
+    return $req;
+
+    $req->closeCursor();
+
+}

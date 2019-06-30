@@ -38,18 +38,18 @@ else
                  <em><?= $data['comment_author'] ?> a écrit: </em>
             </h3>
             
-            <p class="signalement"> 
-              
+            <p>  
                 <?= nl2br(htmlspecialchars($data['comment_content'])) ?>
                 <br />
-
+                
+                <a href="<?php echo 'index.php?action=signalement&id='.$data['comment_id'];?>">Signaler ce message</a>            
             </p>
         </div>
 
     	<?php
     }
 }
-
+// <p class="signalement" ligne 41
 ?>
 
 <form method="post" action='index.php?action=submitComment'>
