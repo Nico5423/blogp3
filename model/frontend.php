@@ -57,10 +57,6 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
 {
     $db = dbConnect(); // on fait la connexion
     
-    //echo $idPostParam;
-    //echo $auteurParam;
-    //echo $commentaireParam;
-    
     // REQUÊTE PREPAREE d'ECRITURE dans la base de données / table des commentaires
     $req = $db->prepare('INSERT INTO table_comments(post_id, comment_author, comment_content) VALUES(:post_id, :comment_author, :comment_content)');
     $req->execute(array(
@@ -68,25 +64,47 @@ function insertCommentaire($idPostParam,$auteurParam,$commentaireParam)
     'comment_author' => $auteurParam,
     'comment_content' => $commentaireParam,
         ));
-     
+     $req->closeCursor();
 }
 
 function modifSignal($noComment)
 {
+    // on fait la Connexion
+    $db = dbConnect(); 
 
-    $db = dbConnect(); // on fait la connexion
-
-    /*$resultat=$db->exec('UPDATE table_comments SET signalement = 1 WHERE comment_id=3');
-    echo $resultat . ' entrées ont été modifiées !';*/
-   
-
-    $req = $db->prepare('UPDATE table_comments SET signalement = 1 WHERE comment_id=:numeroCommentaire');
-    $req->execute(array(
-    'numeroCommentaire' => $noComment
-    ));
-
-    return $req;
-
+    //REQUETE PREPAREE POUR SIGNALEMENT DU COMMENTAIRE
+    $req=$db->prepare('UPDATE table_comments SET signalement = 1 WHERE comment_id=?');
+    $req->execute(array($noComment));
+    
+      
+    //FIN DE LA REQUETE
     $req->closeCursor();
+}
+    
 
+function controleModif($numeroco)
+{
+    // on fait la connexion
+    $db = dbConnect(); 
+
+    //REQUETE PREPAREE POUR SIGNALEMENT DU COMMENTAIRE
+    $reponse = $db->prepare('SELECT post_id FROM table_comments WHERE comment_id=?');
+    $reponse->execute(array($numeroco));
+    
+    
+
+    while ($toto = $reponse->fetch())
+    {
+    
+    //while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)
+    //{
+    
+
+    echo $toto['post_id'];
+    echo $numeroco;
+    //$donnees['post_id'];
+    
+    }
+    //FIN DE LA REQUETE
+    $reponse->closeCursor();
 }

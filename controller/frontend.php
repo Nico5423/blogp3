@@ -13,13 +13,15 @@ function listPosts()
 
 /* CETTE FONCTION EST-ELLE UTILISEE ???????
 
-function listComments()
+/*function listComments()
 {
     $comments = getListComments(); // On récupère la liste des comments en BDD
     require('view/frontend/listCommentsView.php');
 }
 */
 
+
+*/
 
 // On récupère les infos du post grâce à l'id passé dans l'URL
 
@@ -47,8 +49,6 @@ function submitCommentForm()
 
 function signalement($att)
 {
-
-$req=modifSignal($att);
-echo $req;
-
+$nbComSi=modifSignal($att);
+$tutu=controleModif($att);
 }
