@@ -6,18 +6,19 @@ require('model/frontend.php');
 
 function listPosts()
 {
-    $posts = getListPosts(); // On récupère la liste des posts en BDD
+    $posts = getListPosts(); // On récupère la liste des posts en BDD et on la met dans la variable $posts
     require('view/frontend/listPostsView.php');
 }
 
 
+/* CETTE FONCTION EST-ELLE UTILISEE ???????
 
 function listComments()
 {
     $comments = getListComments(); // On récupère la liste des comments en BDD
     require('view/frontend/listCommentsView.php');
 }
-
+*/
 
 
 // On récupère les infos du post grâce à l'id passé dans l'URL
