@@ -49,6 +49,24 @@ function signalement($att)
 modifSignal($att);
 $postIdRetourne=controleModif($att);
 
+
+/*$class = "SignalComments";
+   if ( $post["signalement"] == "1" ) {
+       $class = "signalement";
+   }
+   
+   <p class="<?php echo $class;?>" >
+           jdjdjd
+   </p>
+
+*/
+
+
+
+
+
+
 header('Location: index.php?action=detailPost&id='.$postIdRetourne);
 	exit(); // toujours mettre un exit après header
 }
+
