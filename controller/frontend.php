@@ -46,6 +46,10 @@ function submitCommentForm()
 
 function signalement($att)
 {
-$nbComSi=modifSignal($att);
-$tutu=controleModif($att);
+modifSignal($att);
+$postIdRetourne=controleModif($att);
+echo "le post concerné est ".$postIdRetourne;
+
+header('Location: index.php?action=detailPost&id='.$postIdRetourne);
+	exit(); // toujours mettre un exit après header
 }

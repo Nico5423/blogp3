@@ -100,10 +100,10 @@ function controleModif($numeroco)
     //{
     
 
-    echo $toto['post_id'];
-    echo $numeroco;
-    //$donnees['post_id'];
+    $postId=$toto['post_id'];
+    //echo $numeroco;
     
+    return $postId;
     }
     //FIN DE LA REQUETE
     $reponse->closeCursor();
