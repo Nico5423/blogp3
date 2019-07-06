@@ -35,11 +35,8 @@ function submitCommentForm()
 
 function signalement($att)
 {
-modifSignal($att);
-$postIdRetourne=controleModif($att);
-
-
-header('Location: index.php?action=detailPost&id='.$postIdRetourne);
+	modifSignal($att);
+	header('Location: index.php?action=detailPost&id='.$postIdRetourne);
 	exit(); // toujours mettre un exit après header
 }
 

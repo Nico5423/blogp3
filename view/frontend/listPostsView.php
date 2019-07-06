@@ -1,26 +1,29 @@
 <?php $title = 'Accueil'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
-<p>Derniers posts du blog :</p>
+
 <?php
 
 while ($data = $posts->fetch())
 {
     ?>
-    <div class="news">
-        <h3>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
             <?= htmlspecialchars($data['post_title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-        
-        <p>
-            <?= nl2br(htmlspecialchars($data['post_content'])) ?>
-            <br />
-            <?= nl2br(htmlspecialchars($data['post_id'])) ?>
-            <br />
-            <em><a href="index.php?action=detailPost&id=<?= $data['post_id'] ?>">Detail du post</a></em>
-        </p>
+            <div class="card-body">
+                <p class="card-text">
+                    <?= nl2br(htmlspecialchars($data['post_content'])) ?>                
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="index.php?action=detailPost&id=<?= $data['post_id'] ?>">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Detail du post</button>
+                        </a>
+                    </div>
+                    <small class="text-muted">Posté le <?= $data['creation_date_fr'] ?></small>
+                </div>
+            </div>
+        </div>
     </div>
 	<?php
 }

@@ -37,7 +37,7 @@ else
         $class = "news";
         if ($data["signalement"] == "1" ) 
         {
-        $class = "signaled";
+            $class = "signaled";
         }
         ?>
         <div class="<?php echo $class;?>" >
@@ -51,7 +51,6 @@ else
             <p>  
                 <?= nl2br(htmlspecialchars($data['comment_content'])) ?>
                 <br />
-                <em>indice de signalement :  <?= $data['signalement'] ?></em></br>
                 <a href="<?php echo 'index.php?action=signalement&id='.$data['comment_id'];?>">Signaler ce message</a>            
             </p>
         </div>

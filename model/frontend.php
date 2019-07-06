@@ -74,37 +74,12 @@ function modifSignal($noComment)
 
     //REQUETE PREPAREE POUR SIGNALEMENT DU COMMENTAIRE
     $req=$db->prepare('UPDATE table_comments SET signalement = 1 WHERE comment_id=?');
-    $req->execute(array($noComment));
+    $successUpdate=$req->execute(array($noComment));
     
-      
+  
+
     //FIN DE LA REQUETE
     $req->closeCursor();
+    return $successUpdate;
 }
     
-
-function controleModif($numeroco)
-{
-    // on fait la connexion
-    $db = dbConnect(); 
-
-    //REQUETE PREPAREE POUR SIGNALEMENT DU COMMENTAIRE
-    $reponse = $db->prepare('SELECT post_id FROM table_comments WHERE comment_id=?');
-    $reponse->execute(array($numeroco));
-    
-    
-
-    while ($toto = $reponse->fetch())
-    {
-    
-    //while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)
-    //{
-    
-
-    $postId=$toto['post_id'];
-    //echo $numeroco;
-    
-    return $postId;
-    }
-    //FIN DE LA REQUETE
-    $reponse->closeCursor();
-}
