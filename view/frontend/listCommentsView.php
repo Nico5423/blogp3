@@ -19,7 +19,7 @@ if(empty($listComments))
     ?>
     <div class="news">
         <b> Aucun commentaire pour cet article</b><br/>
-      
+        
     </div>
     <?php
 }
@@ -28,20 +28,30 @@ if(empty($listComments))
 else
 {
 
+/*$class = "SignalComments";*/
+   
     
     foreach ($listComments as $data)
     {
+        
+        $class = "news";
+        if ($data["signalement"] == "1" ) 
+        {
+        $class = "signaled";
+        }
         ?>
-        <div class="news">
+        <div class="<?php echo $class;?>" >
+ 
             <h3>
                  <em>le <?= $data['creation_date_fr'] ?></em><br/>
                  <em><?= $data['comment_author'] ?> a écrit: </em>
+
             </h3>
             
             <p>  
                 <?= nl2br(htmlspecialchars($data['comment_content'])) ?>
                 <br />
-                
+                <em>indice de signalement :  <?= $data['signalement'] ?></em></br>
                 <a href="<?php echo 'index.php?action=signalement&id='.$data['comment_id'];?>">Signaler ce message</a>            
             </p>
         </div>
