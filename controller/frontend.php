@@ -11,17 +11,6 @@ function listPosts()
 }
 
 
-
-/*function listComments()
-{
-    $comments = getListComments(); // On récupère la liste des comments en BDD
-    require('view/frontend/listCommentsView.php');
-}
-
-*/
-
-// On récupère les infos du post grâce à l'id passé dans l'URL
-
 function getPost()
 {	
 	
