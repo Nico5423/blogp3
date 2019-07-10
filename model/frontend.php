@@ -23,7 +23,7 @@ function dbConnect()
     // on fait une REQUÊTE SIMPLE dans la base  qu'on met dans $req
     //après SELECT on dit quels champs on veut récupérer, dans quelle table, l'ordre et le nombre
     $req = $db->query('SELECT post_id, post_title, post_content, DATE_FORMAT(post_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr 
-            FROM table_posts ORDER BY post_creation DESC LIMIT 0, 5');//après SELECT on dit quels champs on veut récupérer, dans quelle table, l'ordre et le nombre
+            FROM table_posts ORDER BY post_creation DESC LIMIT 0, 6');//après SELECT on dit quels champs on veut récupérer, dans quelle table, l'ordre et le nombre
     return $req;//renvoie $req à celui qui a appelé la fonction
 }
 
